@@ -1,0 +1,15 @@
+.button {
+    width: auto;
+    height: 68px;
+    background-color: #222222;
+    border-radius: 15px;
+    min-width: 268px;
+    cursor: pointer;
+}
+
+.buttonText {
+    font-size: 36px;
+    color: #FFF;
+    font-weight: 400;
+    text-align: center;
+}

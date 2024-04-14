@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Bootstrap project
 
-## Getting Started
+## Requirements
 
-First, run the development server:
+- node js v18.17.0
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Run project:
+1) ``` npm install ``` install dependencies.
+2) ``` npm run dev ``` - run local development server.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+# Quick Review
+Сделано:
+1) адаптирован под мобильные устройства и планшеты
+2) наполнение контентом отзывов из html обернутого в json
+3) наполнение контентом товары по апи
+  а) показывать первую страницу сразу (ssr)
+  b) остальные страницы подгружать ajax запросом, по мере прокрутки вниз
+4) при нажатии на кнопку "купить", она должна меняться на кнопки + и - и поле для ввода кол-ва товара, значение поля должно быть 1, кнопки должны добавлять отбавлять товар.
+5) при изменении кол-ва какого-либо из товаров должна меняться информация в корзине 
+6) набранные товары и введенный номер телефона должны сохраняться при перезагрузки страницы
+7) маска в поле для телефона
+8) при нажатии кнопки "заказать" идет проверка того что телефон полностью введен
+  a) если всё хорошо - отправлять запрос на сервер
+  b) если есть ошибки - подсветить соответствующие поля красным (поле номера телефона)
 
-## Learn More
+9)  пофиксить xss атаку через контент отзывов, учесть возможность того что название товара может быть длиннее чем в дизайне.
+10) скорость загрузки сайта и скорость появления там контента (рекомендуется ssr)
+11) читабельность/поддерживаемость/расширяемость кода
+12) Очистка корзины после успешной покукпи и обновление состояния карточек + самой корзины товаров.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Рекомендации:
+1) Использование библеотеки UI компонентов например Antd.
+2) Использование Graphql для работы с API. Упрощает работу с фетичнгом данных, pagination, refetch.
+Для сервера дает возможность легко интегрировать микросервисную архитектуру используя Appolo Federation. 
+Интеграция с ORM системами по типу Prisma и автогенерация типов и query/mutation основываясь на схеме БД.
+3) Использование "быстрой" базы данных для хранения товаров в корзине по типу Redis. Что бы пользователь имел доступ
+к общей корзине для своего аккаунта с любого устройства, не только с одного как в данном случае.
